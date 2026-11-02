@@ -1,0 +1,137 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #f4f6fb;
+}
+
+.layout-content {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+.sidebar {
+  --side-bg: #12162b;
+  --side-text: #aab0c8;
+  --side-hover: rgba(255, 255, 255, 0.07);
+  --side-active: #4f46e5;
+
+  width: 248px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px 14px;
+  background: var(--side-bg);
+  color: var(--side-text);
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  transition: width 0.2s ease;
+  overflow: hidden;
+}
+
+.sidebar.is-collapsed {
+  width: 76px;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px;
+  min-height: 40px;
+}
+
+.sidebar-logo {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--side-active);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.sidebar-title {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-link,
+.sidebar-toggle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 14px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--side-text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-link:hover,
+.sidebar-toggle:hover {
+  background: var(--side-hover);
+  color: #ffffff;
+}
+
+.nav-link.is-active {
+  background: var(--side-active);
+  color: #ffffff;
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.toggle-icon {
+  transition: transform 0.2s ease;
+}
+
+.sidebar.is-collapsed .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.sidebar.is-collapsed .sidebar-title,
+.sidebar.is-collapsed .nav-label {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .sidebar {
+    width: 76px;
+  }
+
+  .sidebar-title,
+  .nav-label {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .sidebar-toggle {
+    display: none;
+  }
+}
